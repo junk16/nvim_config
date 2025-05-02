@@ -1,0 +1,56 @@
+{
+  "languageserver": {
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    },
+    "dockercompose": {
+      "command": "docker-compose-langserver",
+      "args": ["--stdio"],
+      "filetypes": ["dockercompose"],
+      "rootPatterns": [".git", ".env", "docker-compose.yml", "compose.yml"]
+    },
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    },
+    "sql": {
+      "command": "sql-language-server",
+      "args": ["up", "--method", "node-ipc"],
+      "filetypes": ["sql", "mysql"]
+    },
+    "efm": {
+      "command": "efm-langserver",
+      "args": ["-c", "./efm-langserver.yml"],
+      "filetypes": ["vim", "eruby", "markdown"]
+    }
+  },
+
+  "codeLens.enable": true,
+  "solargraph.shell": "/bin/zsh",
+  "solargraph.useBundler": false,
+  "phpls.path": "$(brew --prefix)/bin/intelephense",
+  "diagnostic-languageserver.filetypes": {
+    "php": ["${HOME}/.composer/vendor/bin/phpcs", "${HOME}/.composer/vendor/bin/phpstan"]
+  },
+  "yaml.schemas": {
+    "Kubernetes": "*.yaml"
+  },
+  "java.jdt.ls.java.home": "/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home",
+  "java.configuration.runtimes": [
+  {
+    "name": "JavaSE-21",
+    "path": "/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home",
+    "default": true
+  },
+  ],
+
+"java.jdt.ls.vmargs": [
+  "-javaagent:/Users/jun.yamada/lib/lombok.jar",
+  "--add-modules=ALL-SYSTEM",
+  "--add-opens", "java.base/java.util=ALL-UNNAMED",
+  "--add-opens", "java.base/java.lang=ALL-UNNAMED"
+]
+}
